@@ -10,6 +10,7 @@ import { HeaderComponent } from './header/header.component';
 import { ExperienceComponent } from './experience/experience.component';
 import { ContactComponent } from './contact/contact.component';
 
+
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
@@ -20,7 +21,6 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [],
   imports: [
   RouterModule.forRoot(routes),
   FormsModule,
