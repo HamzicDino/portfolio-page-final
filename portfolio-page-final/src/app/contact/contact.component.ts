@@ -1,13 +1,25 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { ContactService } from '../contact.service';
 
 @Component({
-  selector: 'app-contact',
-  standalone: true,
-  imports: [CommonModule],
-  templateUrl: './contact.component.html',
-  styleUrl: './contact.component.css'
+  // ...
 })
 export class ContactComponent {
+  contactForm = new FormGroup({
+    name: new FormControl('', [Validators.required]),
+    email: new FormControl('', [Validators.required, Validators.email]),
+    message: new FormControl('', [Validators.required]),
+  });
 
+  constructor(private contactService: ContactService) {}
+
+  onSubmit() {
+    if (this.contactForm.valid) {
+      this.contactService.sendContactForm(this.contactForm.value).subscribe(
+        response => console.log('Message successfully sent', response),
+        error => console.log('Error sending message', error)
+      );
+      }
+  }
 }

@@ -1,1 +1,9 @@
 <p>contact works!</p>
+
+<form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+    <input formControlName="name" placeholder="Name">
+    <input formControlName="email" type="email" placeholder="Email">
+    <textarea formControlName="message" placeholder="Your message"></textarea>
+    <button type="submit" [disabled]="!contactForm.valid">Send</button>
+</form>
+  
